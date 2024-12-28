@@ -7,17 +7,24 @@ import Table from "components/Table/Table";
 import { removeDollarSign } from "utils/helper";
 
 function App() {
-  const [status, setStatus] = useState<
-    "loading" | "error" | "success" | "idle"
-  >("idle");
+  const [status, setStatus] = useState<{
+    status: "loading" | "error" | "success" | "idle";
+    statusMsg?: string;
+  }>({ status: "idle" });
 
   const updateInventory = useInventoryStore((state) => state.updateInventory);
 
   useEffect(() => {
     (async () => {
-      setStatus("loading");
+      setStatus({ status: "loading" });
       const [data, error] = await getInventory();
-      if (error || !data) return setStatus("error");
+
+      if (error || !data)
+        return setStatus({
+          status: "error",
+          statusMsg: error?.message,
+        });
+
       updateInventory(
         data.map((e) => ({
           ...e,
@@ -26,7 +33,7 @@ function App() {
           isDisabled: false,
         }))
       );
-      setStatus("success");
+      setStatus({ status: "success" });
     })();
     return () => {};
   }, []);

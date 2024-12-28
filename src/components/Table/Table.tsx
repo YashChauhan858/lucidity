@@ -8,7 +8,10 @@ import EmptyTable from "./EmptyTable";
 const Table = ({
   status,
 }: {
-  status: "loading" | "error" | "success" | "idle";
+  status: {
+    status: "loading" | "error" | "success" | "idle";
+    statusMsg?: string;
+  };
 }) => {
   const inventory = useInventoryStore((state) => state.inventory);
 
@@ -18,10 +21,14 @@ const Table = ({
         <table className="w-full min-w-[600px]">
           <TableHeader />
           <tbody>
-            {status === "error" && <ErrorState />}
-            {status === "loading" && <RowLoader />}
-            {status === "success" && inventory.length === 0 && <EmptyTable />}
-            {status === "success" &&
+            {status.status === "error" && (
+              <ErrorState errorMsg={status?.statusMsg} />
+            )}
+            {status.status === "loading" && <RowLoader />}
+            {status.status === "success" && inventory.length === 0 && (
+              <EmptyTable />
+            )}
+            {status.status === "success" &&
               inventory.length !== 0 &&
               inventory.map((item, index) => (
                 <TableRow
