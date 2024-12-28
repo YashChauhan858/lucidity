@@ -15,7 +15,7 @@ const CardContainer = () => {
     useCalculateInventoryStats(inventory);
 
   return (
-    <div className="flex gap-2 mt-5">
+    <div className="flex gap-2 mt-5 md:flex-wrap">
       <Card
         Icon={ShoppingCartIcon}
         heading="Total product"
