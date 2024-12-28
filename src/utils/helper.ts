@@ -4,3 +4,9 @@ export function formatNumberWithCommas(number: number | string): string {
   const formatter = new Intl.NumberFormat("en-US");
   return formatter.format(+number);
 }
+
+export function removeDollarSign(input: string): string {
+  const newValue = input.replace(/\$/g, "");
+  if (newValue === "" || newValue === "0") return "0";
+  return newValue;
+}
