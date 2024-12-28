@@ -4,4 +4,5 @@ export type TGetInventory = {
   price: string;
   quantity: number;
   value: string;
+  isDisabled: boolean;
 };

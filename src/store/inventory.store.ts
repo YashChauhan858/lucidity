@@ -17,5 +17,21 @@ export const useInventoryStore = create<State & Actions>()(
         }
       });
     },
+    removeItemFromInventory: (itemIndex: number) => {
+      if (typeof itemIndex !== "undefined") {
+        set((state) => {
+          state.inventory = state.inventory.filter((_, i) => i !== itemIndex);
+        });
+      }
+    },
+    toggleDisableInventoryItem: (itemIndex: number) => {
+      if (typeof itemIndex !== "undefined") {
+        set((state) => {
+          state.inventory.map((item, i) => {
+            if (i === itemIndex) item.isDisabled = !item?.isDisabled;
+          });
+        });
+      }
+    },
   }))
 );
