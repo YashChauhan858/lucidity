@@ -10,7 +10,7 @@ export default {
       primary: "#161718",
       secondary: "#243325",
       cardBg: "#212124",
-      badgeText: "#6f7a3d",
+      badgeText: "#98C379",
       border: "#ffffff1c",
     },
   },
