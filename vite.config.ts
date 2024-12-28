@@ -13,6 +13,7 @@ export default defineConfig({
       utils: resolve(root, "utils"),
       network: resolve(root, "network"),
       store: resolve(root, "store"),
+      hooks: resolve(root, "hooks"),
     },
   },
 });

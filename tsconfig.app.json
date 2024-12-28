@@ -21,7 +21,8 @@
       "utils/*": ["./src/utils/*"],
       "network/*": ["./src/network/*"],
       "network": ["./src/network/index"],
-      "store/*": ["./src/store/*"]
+      "store/*": ["./src/store/*"],
+      "hooks": ["./src/hooks/index"]
     },
 
     /* Linting */
