@@ -54,7 +54,7 @@ export const EditInventoryModal = () => {
         <div className="mb-6 flex items-center justify-between">
           <div>
             <h2 className="text-3xl font-semibold text-white">Edit product</h2>
-            <p className="text-sm text-white font-semibold font-medium mt-3">
+            <p className="text-sm text-white font-medium mt-3">
               {editInventoryItem?.name ?? "-"}
             </p>
           </div>
