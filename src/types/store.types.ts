@@ -1,6 +1,6 @@
 import { TGetInventory } from "./request.types";
 
-export type State = {
+export type TState = {
   isUser: boolean;
   inventory: TGetInventory[];
   editInventoryItem: number;
@@ -8,7 +8,8 @@ export type State = {
 
 export type Actions = {
   toggle: () => void;
-  update: (key: keyof State, value: State[keyof State]) => void;
+  toggleEditModal: (itemIndex: number) => void;
+  updateInventory: (inventory: TGetInventory[]) => void;
   removeItemFromInventory: (itemIndex: number) => void;
   toggleDisableInventoryItem: (itemIndex: number) => void;
   edit: (item: number) => void;

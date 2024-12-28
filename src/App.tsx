@@ -11,15 +11,14 @@ function App() {
     "loading" | "error" | "success" | "idle"
   >("idle");
 
-  const update = useInventoryStore((state) => state.update);
+  const updateInventory = useInventoryStore((state) => state.updateInventory);
 
   useEffect(() => {
     (async () => {
       setStatus("loading");
       const [data, error] = await getInventory();
       if (error || !data) return setStatus("error");
-      update(
-        "inventory",
+      updateInventory(
         data.map((e) => ({
           ...e,
           price: removeDollarSign(e.price),

@@ -17,12 +17,12 @@ export const EditInventoryModal = () => {
       : defaultState
   );
 
-  const update = useInventoryStore((state) => state.update);
+  const toggleEditModal = useInventoryStore((state) => state.toggleEditModal);
   const updateInventoryItem = useInventoryStore(
     (state) => state.updateInventoryItem
   );
 
-  const closeModal = () => update("editInventoryItem", -1);
+  const closeModal = () => toggleEditModal(-1);
 
   const [formData, setFormData] =
     useState<Partial<TGetInventory>>(defaultState);
