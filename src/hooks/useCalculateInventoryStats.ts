@@ -28,11 +28,7 @@ export const useCalculateInventoryStats = (inventory: TGetInventory[]) => {
       if (inventory[i].isDisabled) continue;
       if (inventory[i].quantity === 0) inventoryStats.outOfStock++;
       inventoryStats.totalProducts++;
-
-      const value = inventory[i].value.slice(1);
-      if (value) {
-        inventoryStats.totalValue += Number(value);
-      }
+      inventoryStats.totalValue += Number(inventory[i]?.value);
     }
 
     return inventoryStats;

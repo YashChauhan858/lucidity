@@ -1,6 +1,7 @@
 import { Eye, EyeClosed, Pencil, Trash2 } from "lucide-react";
 import { TGetInventory } from "src/types";
 import { useInventoryStore } from "store/inventory.store";
+import { formatNumberWithCommas } from "utils/helper";
 
 const TableRow = ({
   item,
@@ -16,6 +17,7 @@ const TableRow = ({
   const toggleDisableInventoryItem = useInventoryStore(
     (state) => state?.toggleDisableInventoryItem
   );
+  const edit = useInventoryStore((state) => state.edit);
 
   const disableFunctionality = item.isDisabled || !isAdmin;
 
@@ -27,14 +29,15 @@ const TableRow = ({
     >
       <td className="rounded-l-lg p-4 text-sm">{item.name}</td>
       <td className="p-4 text-sm">{item.category}</td>
-      <td className="p-4 text-sm">{item.price}</td>
-      <td className="p-4 text-sm">{item.quantity}</td>
-      <td className="p-4 text-sm">{item.value}</td>
+      <td className="p-4 text-sm">{formatNumberWithCommas(item?.price)}</td>
+      <td className="p-4 text-sm">{formatNumberWithCommas(item?.quantity)}</td>
+      <td className="p-4 text-sm">{formatNumberWithCommas(item.value)}</td>
       <td className="rounded-r-lg p-4">
         <div className="flex items-center gap-2">
           <button
             className="text-gray-400 hover:text-gray-100"
             disabled={disableFunctionality}
+            onClick={() => edit(itemIndex)}
           >
             <Pencil
               size={16}

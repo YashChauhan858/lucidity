@@ -1,4 +1,4 @@
-import { Actions, State } from "src/types/store.types";
+import { Actions, State, TGetInventory } from "types";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
@@ -6,6 +6,8 @@ export const useInventoryStore = create<State & Actions>()(
   immer((set) => ({
     isUser: false,
     inventory: [],
+    editInventoryItem: -1,
+
     toggle: () =>
       set((state) => {
         state.isUser = !state.isUser;
@@ -32,6 +34,22 @@ export const useInventoryStore = create<State & Actions>()(
           });
         });
       }
+    },
+    edit: (item: number) => {
+      set((state) => {
+        state.editInventoryItem = item;
+      });
+    },
+
+    updateInventoryItem: (item: Partial<TGetInventory>) => {
+      set((state) => {
+        if (state.editInventoryItem >= 0) {
+          state.inventory[state.editInventoryItem] = {
+            ...state.inventory[state.editInventoryItem],
+            ...item,
+          };
+        }
+      });
     },
   }))
 );
