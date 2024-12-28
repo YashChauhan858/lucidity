@@ -12,6 +12,7 @@ export default {
       cardBg: "#212124",
       badgeText: "#98C379",
       border: "#ffffff1c",
+      inputFieldBg: "#3f413d",
     },
     screens: {
       sm: { max: "468px" },
