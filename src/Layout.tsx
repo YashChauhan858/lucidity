@@ -8,7 +8,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
     (state) => state.editInventoryItem
   );
   return (
-    <main className="h-full">
+    <main className="h-full overflow-hidden overflow-y-scroll">
       <Nav />
       {editInventoryItem >= 0 && <EditInventoryModal />}
       {children}
